@@ -9,7 +9,9 @@ public class EjerciciosMetodos {
 
     public static void main(String[] args) {
         //calcularArea();
-        rango();
+        //rango();
+        //primo();
+        factorial();
     }
     /* Crea una aplicación que nos calcule el área de un circulo, cuadrado o triangulo.
     Pediremos que figura queremos calcular su área y según lo introducido pedirá los valores
@@ -89,5 +91,61 @@ public class EjerciciosMetodos {
             numeroAleatorio =  (int)(Math.random() * (rangoMax - rangoMin + 1)) + rangoMin;;
             System.out.printf("numero %d: %d %n" , i,numeroAleatorio);
         }
+    }
+
+    /*  Crea una aplicación que nos pida un número por teclado y con un método se lo pasamos por parámetro para que
+        nos indique si es o no un número primo, debe devolver true si es primo sino false.
+
+        Un número primo es aquel solo puede dividirse entre 1 y si mismo. Por ejemplo: 25 no es primo,
+        ya que 25 es divisible entre 5, sin embargo, 17 si es primo.
+
+        Un buen truco para calcular la raíz cuadrada del numero e ir comprobando que si es divisible
+        desde ese numero hasta 1.*/
+    private static void primo (){
+        int numero;
+        boolean esPrimo;
+        System.out.println("Digite el numero que quiere saber si es primo");
+        numero = sc.nextInt();
+        esPrimo = isPrimo(numero);
+        if (esPrimo){
+            System.out.printf("El numero %d es primo", numero);
+        }else {
+            System.out.printf("El numero %d no es primo", numero);
+        }
+    }
+    public static boolean isPrimo(int numero){
+        boolean esPrimo = false;
+        int primo = 0;
+        double resto;
+        for (int i = 1; i <= numero; i++) {
+            resto = numero % i;
+            if (resto == 0){
+                primo++;
+            }
+        }
+        if (primo <= 2){
+            esPrimo =true;
+        }
+        return esPrimo;
+    }
+    /*Crea una aplicación que nos calcule el factorial de un número pedido por teclado,
+    lo realizara mediante un método al que le pasamos el número como parámetro.
+    Para calcular el factorial, se multiplica los números anteriores hasta llegar a uno.
+    Por ejemplo, si introducimos un 5, realizara esta operación 5*4*3*2*1=120.*/
+    public static void factorial(){
+        int numero;
+        int fac;
+        System.out.println("Digite el numero al cual quiere ver su factorial");
+        numero = sc.nextInt();
+        fac = factor(numero);
+        System.out.printf("El factorial de %d es: %d",numero,fac);
+    }
+    public static int factor(int numero){
+        int factorial = 1;
+        while (numero > 0){
+            factorial *= numero;
+            numero --;
+        }
+        return factorial;
     }
 }
