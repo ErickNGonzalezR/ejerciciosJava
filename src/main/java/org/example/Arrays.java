@@ -12,7 +12,9 @@ public class Arrays {
         //tercero();
         //cuarto();
         //quinto();
-        sextoA();
+        //sextoA();
+        //septimo();
+        octavo();
     }
 
     /*Crea un array de 10 posiciones de números con valores pedidos por teclado.
@@ -262,4 +264,47 @@ public class Arrays {
 
     Por ejemplo, en un array de 10 posiciones e indicamos mostrar los números acabados en 5,
      podría salir 155, 25, etc.*/
+    private static void octavo (){
+        int tamano = tamanoArray();
+        int [] lista = new int[tamano];
+        char ultimoNumero;
+        String numeroString;
+
+        System.out.println("Por favor digita el ultimo numero del 0 al 9");
+
+        numeroString = sc.next();
+        ultimoNumero = numeroString.charAt(numeroString.length()-1);
+        lista = llenatArraysAleator(tamano,300, ultimoNumero);
+        mostrarArray(lista);
+
+    }/*
+    public static int [] llenatLista(int tamano){
+        int [] lista = new int[tamano];
+        int numero;
+        String numeroString;
+        char ultimoNumero;
+        System.out.println("Por favor digita el ultimo numero del 0 al 9");
+        numeroString = sc.next();
+        ultimoNumero = numeroString.charAt(numeroString.length()-1);
+
+        for (int i = 0; i < tamano; i++) {
+
+        }
+
+    }*/
+    public static int[] llenatArraysAleator (int tamano, int maximo, char ultimoNumero){
+        int[] numero = new int[tamano];
+        int numeroAleatorio;
+        char numeroAleatorioChar;
+        String numeroAleatorioString;
+        for (int i = 0; i < tamano; i++) {
+            do {
+                numeroAleatorio =  (int)(Math.random() * (maximo - 0 + 1)) + 0;
+                numeroAleatorioString = String.valueOf(numeroAleatorio);
+                numeroAleatorioChar = numeroAleatorioString.charAt(numeroAleatorioString.length()-1);
+            }while (numeroAleatorioChar != ultimoNumero);
+            numero[i] = numeroAleatorio;
+        }
+        return numero;
+    }
 }
